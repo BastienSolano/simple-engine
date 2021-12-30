@@ -1,6 +1,9 @@
 #include <iostream>
+#include <Board.hpp>
 
 int main(void) {
-	std::cout << "Hello World!" << std::endl;
+	Board board = Board();
+	std::cout << board.getFen() << std::endl;
+
 	return 0;
 }

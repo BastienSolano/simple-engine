@@ -17,9 +17,12 @@ class Bitboard {
 	std::uint64_t bitboard;
 
 	public:
+	Bitboard() = default;
 	Bitboard(uint64_t bitboard);
 
 	public:
+	// TODO: implement set operators ( |, &, ~, ^)
+	uint64_t getBB();
 	bool get(int file, int rank);
 	void set(int file, int rank, bool val);
 

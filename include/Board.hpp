@@ -1,4 +1,5 @@
 #include <Bitboard.hpp>
+#include <string>
 
 class Board {
 	int side; // 0 for white, 1 for black
@@ -8,6 +9,8 @@ class Board {
 	Bitboard bishops[2];
 	Bitboard queens[2];
 	Bitboard kings[2];
+	Bitboard all[2];
+	Bitboard allPieces;
 
 public:
 	/*
@@ -19,4 +22,9 @@ public:
 		nWhitePawn, // all white pawns
 		nBlackPawn // all black pawns
 	};
+
+public:
+	Board();
+
+	std::string getFen();
 };

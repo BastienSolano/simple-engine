@@ -5,9 +5,13 @@ Bitboard::Bitboard(uint64_t bitboard) {
 	this->bitboard = bitboard;
 }
 
+uint64_t Bitboard::getBB() {
+	return this->bitboard;
+}
+
 bool Bitboard::get(int file, int rank) {
 	int square = this->checkAndGetSquare(file, rank);
-	return static_cast<bool>(this->bitboard & (1 << square));
+	return static_cast<bool>(this->bitboard & ((uint64_t)1 << square));
 }
 
 void Bitboard::set(int file, int rank, bool value) {
