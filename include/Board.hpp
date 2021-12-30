@@ -12,6 +12,13 @@ class Board {
 	Bitboard all[2];
 	Bitboard allPieces;
 
+	bool castling[2][2];
+
+	std::string enPassantSquare;
+
+	int movesFifty;
+	int fullMoves;
+
 public:
 	/*
 	* Some redundant information for easier computations

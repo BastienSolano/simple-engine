@@ -41,6 +41,16 @@ Board::Board() {
 		);
 
 	this->allPieces = Bitboard(all[0].getBB() | all[1].getBB());
+
+	this->castling[0][0] = true;
+	this->castling[0][1] = true;
+	this->castling[1][0] = true;
+	this->castling[1][1] = true;
+
+	this->enPassantSquare = "-";
+
+	this->movesFifty = 0;
+	this->fullMoves = 1;
 }
 
 std::string Board::getFen() {
@@ -114,12 +124,47 @@ std::string Board::getFen() {
 		if (rank != 0) fen += "/";
 	}
 
+	// Side who has the turn
 	if (this->side == 0) {
 		fen += " w";
 	}
 	else {
 		fen += " b";
 	}
+
+	// Castling rights
+	bool canCastle = false;
+	std::string castlingRights = " ";
+	if (this->castling[0][0]) {
+		castlingRights += "K";
+		canCastle = true;
+	}
+	if (this->castling[0][1]) {
+		castlingRights += "Q";
+		canCastle = true;
+	}
+	if (this->castling[1][0]) {
+		castlingRights += "k";
+		canCastle = true;
+	}
+	if (this->castling[1][0]) {
+		castlingRights += "q";
+		canCastle = true;
+	}
+	if (canCastle) {
+		fen += castlingRights;
+	}
+
+	// Last move
+	fen += " ";
+	fen += this->enPassantSquare;
+
+	// Number of half-moves for the 50 moves rules
+	fen += " " + std::to_string(this->movesFifty);
+
+	// Number of full moves (incremented each time
+	// Black moves)
+	fen += " " + std::to_string(this->fullMoves);
 
 	return fen;
 }
