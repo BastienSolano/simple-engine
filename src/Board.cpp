@@ -22,23 +22,8 @@ Board::Board() {
 	this->bishops[0] = Bitboard(((uint64_t)1 << 2) | ((uint64_t)1 << 5));
 	this->bishops[1] = Bitboard(((uint64_t)1 << 61) | ((uint64_t)1 << 58));
 
-	// TODO: implement this using set operators on Bitboards
-	this->all[0] = Bitboard(
-		rooks[0].getBB() |
-		knights[0].getBB() |
-		bishops[0].getBB() |
-		queens[0].getBB() |
-		kings[0].getBB() |
-		pawns[0].getBB()
-		);
-	this->all[1] = Bitboard(
-		rooks[1].getBB() |
-		knights[1].getBB() |
-		bishops[1].getBB() |
-		queens[1].getBB() |
-		kings[1].getBB() |
-		pawns[1].getBB()
-		);
+	this->all[0] = rooks[0] | knights[0] | bishops[0] | queens[0] | kings[0] | pawns[0];
+	this->all[1] = rooks[1] | knights[1] | bishops[1] | queens[1] | kings[1] | pawns[1];
 
 	this->allPieces = Bitboard(all[0].getBB() | all[1].getBB());
 

@@ -20,17 +20,6 @@ class Board {
 	int fullMoves;
 
 public:
-	/*
-	* Some redundant information for easier computations
-	*/
-	enum enumPieces {
-		nWhite, // all white pieces
-		nBlack, // all black pieces
-		nWhitePawn, // all white pawns
-		nBlackPawn // all black pawns
-	};
-
-public:
 	Board();
 
 	std::string getFen();

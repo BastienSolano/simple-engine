@@ -5,7 +5,7 @@ Bitboard::Bitboard(uint64_t bitboard) {
 	this->bitboard = bitboard;
 }
 
-uint64_t Bitboard::getBB() {
+uint64_t Bitboard::getBB() const {
 	return this->bitboard;
 }
 
@@ -31,4 +31,27 @@ int Bitboard::checkAndGetSquare(int file, int rank) {
 	}
 
 	return 8 * rank + file;
+}
+
+Bitboard Bitboard::operator|(const Bitboard& b) {
+	Bitboard bb;
+	bb.bitboard = this->bitboard | b.getBB(); 
+	return bb;
+}
+
+Bitboard Bitboard::operator&(const Bitboard& b) {
+	Bitboard bb;
+	bb.bitboard = this->bitboard & b.getBB();
+	return bb;
+}
+
+Bitboard Bitboard::operator^(const Bitboard& b) {
+	Bitboard bb;
+	bb.bitboard = this->bitboard ^ b.getBB();
+	return bb;
+}
+
+Bitboard Bitboard::operator~() {
+	this->bitboard = ~this->bitboard;
+	return *this;
 }

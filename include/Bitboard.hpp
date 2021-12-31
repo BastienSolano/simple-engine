@@ -16,15 +16,19 @@ namespace Constants {
 class Bitboard {
 	std::uint64_t bitboard;
 
-	public:
+public:
 	Bitboard() = default;
 	Bitboard(uint64_t bitboard);
 
-	public:
-	// TODO: implement set operators ( |, &, ~, ^)
-	uint64_t getBB();
+public:
+	uint64_t getBB() const;
 	bool get(int file, int rank);
 	void set(int file, int rank, bool val);
+
+	Bitboard operator|(const Bitboard& b);
+	Bitboard operator&(const Bitboard& b);
+	Bitboard operator^(const Bitboard& b);
+	Bitboard operator~();
 
 	private:
 	int checkAndGetSquare(int file, int rank);
